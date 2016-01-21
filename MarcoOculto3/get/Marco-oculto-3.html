@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>Información del cliente</title>
+    <script>
+        function requestCustomerInfo() {
+            var sid = document.getElementById("txtCustomerId").value;
+            top.frames["hiddenFrame"].location = "getCustomerData2.php?id=" + sid;
+        }
+
+        function displayCustomerInfo(sText) {
+            var divCustomerInfo = document.getElementById("divCustomerInfo");
+            divCustomerInfo.innerHTML = sText;
+        }
+    </script>
+</head>
+<body>
+
+<p> Escriba el id del cliente para obtener la información </p>
+
+<p><label for="txtCustomerId">Customer ID</label><input type="text" id="txtCustomerId" value=""/></p>
+
+<p><input type="button" value="Obtener información" onclick="requestCustomerInfo()"/></p>
+
+<div id="divCustomerInfo"></div>
+<iframe src="auto:blank" name="hiddenFrame" width="0" height="0" frameborder="0"></iframe>
+
+
+</body>
+</html>
