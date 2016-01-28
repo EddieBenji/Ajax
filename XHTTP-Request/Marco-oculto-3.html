@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>Información del cliente</title>
+</head>
+<body>
+
+<p> Escriba el id del cliente para obtener la información </p>
+
+<p><label for="txtCustomerId">Customer ID</label><input type="text" id="txtCustomerId" value=""/></p>
+
+<p><input type="button" value="Obtener información" onclick="requestCustomerInfo()"/></p>
+
+<div id="divCustomerInfo"></div>
+
+
+<!--<script src="js/zxml.js"></script>-->
+<script>
+
+    function displayCustomerInfo(sText) {
+        var divCustomerInfo = document.getElementById("divCustomerInfo");
+        divCustomerInfo.innerHTML = sText;
+    }
+
+    function requestCustomerInfo() {
+        var sid = document.getElementById("txtCustomerId").value;
+        var oXmlHttp = new XMLHttpRequest();
+
+        oXmlHttp.open("get", "getDataHttp.php?id=" + sid);
+        oXmlHttp.onreadystatechange = function () {
+            if (oXmlHttp.readyState == 4) {
+                if (oXmlHttp.status == 200) {
+                    displayCustomerInfo(oXmlHttp.responseText);
+                } else {
+                    displayCustomerInfo(oXmlHttp.statusText);
+                }
+            }
+        };
+        oXmlHttp.send(null);
+
+    }
+</script>
+
+</body>
+</html>

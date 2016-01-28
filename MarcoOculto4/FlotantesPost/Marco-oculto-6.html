@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Guarda datos del cliente</title>
+<script type="text/javascript">
+
+	var oIFrame = null;
+	
+	function createIframe(){
+		var oIFrameElement = document.createElement("iframe");
+		oIFrameElement.width = 0;
+		oIFrameElement.height = 0;
+		oIFrameElement.frameBorder = 0;
+		oIFrameElement.name = "hiddenFrame";
+		oIFrameElement.id = "hiddenFrame";
+		document.body.appendChild(oIFrameElement);
+		
+		oIFrame = frames["hiddenFrame"];
+		
+	}
+	
+	function checkIframe(){
+		if(!oIFrame){
+			createIframe();			
+		}
+		setTimeout(oIFrame.location = "ProxyForm.html",10);
+	}
+	
+	function formReady(){
+		var oHiddenForm = oIFrame.document.forms[0];
+		var oForm = document.forms[0];
+		
+		for(var i=0; i<oForm.elements.length; i++){
+			var oHidden = oIFrame.document.createElement("input");
+			oHidden.type = "hidden";
+			oHidden.name = oForm.elements[i].name;
+			oHidden.value = oForm.elements[i].value;
+			oHiddenForm.appendChild(oHidden);			
+		}
+		
+		oHiddenForm.action = oForm.action;
+		oHiddenForm.submit();
+	}
+	
+	function saveResult(sMessage){
+		var divStatus = document.getElementById("divStatus");
+		divStatus.innerHTML = "Requerimiento completado: " + sMessage;
+	}
+	
+</script>
+
+</head>
+
+<body>
+<form action="SaveCustomer2.php" method="post" onsubmit="checkIframe(); return false" >
+<p>Captura los datos del cliente</p>
+<p> Nombre: <input type="text" name="txtName" value="" /> <br/> </p>
+<p> Dirección: <input type="text" name="txtAdress" value="" /> <br/> </p>
+<p> Ciudad: <input type="text" name="txtCity" value="" /> <br/> </p>
+<p> Estado: <input type="text" name="txtState" value="" /> <br/> </p>
+<p> Código Postal: <input type="text" name="txtZipCode" value="" /> <br/> </p>
+<p> Teléfono: <input type="text" name="txtPhone" value="" /> <br/> </p>
+<p> Correo: <input type="text" name="txtEmail" value="" /> <br/> </p>
+<p> <input type="submit" value="Guadar cliente"/> </p>
+</form>
+
+<div id="divStatus"></div>
+
+</body>
+</html>
