@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Técnica XMLHttp</title>
+<script type="text/javascript" src="zxml.js">
+</script>
+
+<script type="text/javascript">
+	function requestCustomerInfo(){
+		 var sId = document.getElementById("txtCustomerId").value;
+		 var oXmlHttp = new XMLHttpRequest();
+        oXmlHttp.open("get","getCustomerDataHTTP.php?id="+sId,true);
+		oXmlHttp.onreadystatechange = function () {
+				if (oXmlHttp.readyState == 4) {					
+					if (oXmlHttp.status == 200) {
+						displayCustomerInfo(oXmlHttp.responseText);
+					} else {
+						displayCustomerInfo(oXmlHttp.statusText);
+					}
+				}            
+		};		
+		oXmlHttp.send(null);		
+	}
+
+	function displayCustomerInfo(sText){
+		var divCustomerInfo = document.getElementById("divCustomerInfo");
+		divCustomerInfo.innerHTML = sText;
+	}
+</script>
+</head>
+
+<body>
+<p> Escriba el Id del cliente para obtener la información </p>
+<p>Customer ID: <input type="text" id="txtCustomerId" value=""  /></p>
+<p><input type="button" value="Obtener información" onclick="requestCustomerInfo()" /></p>
+<div id="divCustomerInfo"></div>
+</body>
+</html>

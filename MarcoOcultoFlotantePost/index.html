@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function getRequestBody(oForm) {
+            var aParams = [];
+            for (var i = 0; i < oForm.elements.length; i++) {
+                var sParam = encodeURI(oForm.element[i].name);
+                sParam += "=";
+                sParam += encodeURI(oForm.elements[i].value);
+                aParams.push(sParam);
+            }
+            aParams.push().join("&");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
