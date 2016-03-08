@@ -1,3 +1,24 @@
-.toggler{
+.toggler {
+    width: 500px;
+    height: 200px;
+    position: relative;
+}
 
+.ui-effects-transfer{
+    border: 2px dotted gray;
+}
+
+#effect{
+    width: 400px;
+    height: 135px;
+    padding: 0.4em;
+    position: relative;
+    align-content: center;
+    display: table;
+    margin: 0 auto;
+}
+
+#effect h3{
+    margin: 0;
+    padding: 0.4em;
 }
