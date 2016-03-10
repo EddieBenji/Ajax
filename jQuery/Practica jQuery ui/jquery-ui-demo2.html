@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Jquery UI</title>
+    <link rel="stylesheet" href="../jquery-ui/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="css/my-styles2.css"/>
+</head>
+<body>
+<p>Veamos como se implementa un acordión con jQuery</p>
+
+
+<div id="tabs">
+    <ul>
+        <li><a href="#personal-data">Datos personales</a></li>
+        <li><a href="#working-data">Datos laborales</a></li>
+        <li><a href="#studies">Estudios</a></li>
+    </ul>
+    <div id="personal-data">
+        <h3>Datos personas</h3>
+        <div>Primera sección del acordión, captura de datos personales</div>
+    </div>
+    <div id="working-data">
+        <h3>Datos laborales</h3>
+        <div>Segunda sección del acordión, caputa de datos laborales</div>
+    </div>
+    <div id="studies">
+        <h3>Estudios</h3>
+        <div>Tercera sección del acordión, captura de estudios</div>
+    </div>
+</div>
+
+<div id="dates">
+    <label for="datepicker">Escoge la fecha: </label><input type="text" id="datepicker"/>
+</div>
+
+<div id="accordion" style="height: 300px;" class="ui-corner-all">
+    <h3>Datos personas</h3>
+    <div>Primera sección del acordión, captura de datos personales</div>
+
+    <h3>Datos laborales</h3>
+    <div>Segunda sección del acordión, caputa de datos laborales</div>
+
+    <h3>Estudios</h3>
+    <div>Tercera sección del acordión, captura de estudios</div>
+</div>
+
+
+<script src="../jquery-ui/external/jquery/jquery.js"></script>
+<script src="../jquery-ui/jquery-ui.min.js"></script>
+<script src="js/my-app2.js"></script>
+
+</body>
+</html>
